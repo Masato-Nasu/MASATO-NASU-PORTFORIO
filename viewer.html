@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PDF Viewer</title>
+  <style>
+    :root{--bg:#fff;--fg:#111;--muted:#666;--line:#e6e6e6;--r:16px;}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--fg);}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line); padding:12px 12px; display:flex; gap:10px; align-items:center;}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 10px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--fg);text-decoration:none;font-size:13px;}
+    .btn:hover{background:#f6f6f6;}
+    .title{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
+    main{max-width:980px;margin:0 auto;padding:14px;}
+    .page{margin:0 auto 14px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fafafa;
+      box-shadow:0 1px 0 rgba(0,0,0,.03);}
+    canvas{display:block;width:100%;height:auto;}
+    .ph{padding:28px;color:var(--muted);font-size:13px;text-align:center;}
+    .meta{font-size:12px;color:var(--muted);margin:10px 0 0;text-align:center;}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="btn" href="index.html">← Back</a>
+    <div id="title" class="title">Loading…</div>
+    <a id="openPdf" class="btn" href="#" target="_blank" rel="noopener">Open PDF</a>
+  </header>
+  <main>
+    <div id="pages"></div>
+    <div id="meta" class="meta"></div>
+  </main>
+
+  <!-- pdf.js (CDN). オフライン運用したい場合はファイル同梱に変更します -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.7.76/pdf.min.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>
