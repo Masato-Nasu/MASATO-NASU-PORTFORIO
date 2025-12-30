@@ -13,7 +13,7 @@
   // pdf.js worker
   if (window.pdfjsLib?.GlobalWorkerOptions) {
     window.pdfjsLib.GlobalWorkerOptions.workerSrc =
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.7.76/pdf.worker.min.js';
+      'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/legacy/build/pdf.worker.min.js';
   }
 
   function createPageShell(pageNumber) {
@@ -68,9 +68,14 @@
     await page.render(renderContext).promise;
   }
 
-  async function main() {
+    // pdf.js が読み込めていない場合（CDNブロック/読み込み失敗など）
+  if (!window.pdfjsLib) {
+    pagesEl.innerHTML = `<div class="ph">PDF.js が読み込めていません。\nネットワークで pdf.min.js が 200 で取得できているか確認してください。</div>`;
+    return;
+  }
+async function main() {
     try {
-      const loadingTask = window.pdfjsLib.getDocument({ url: file });
+      const loadingTask = window.pdfjsLib.getDocument({ url: file, cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/', cMapPacked: true });
       const pdf = await loadingTask.promise;
 
       metaEl.textContent = `${pdf.numPages} pages`;
