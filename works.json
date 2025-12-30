@@ -2,18 +2,8 @@
   {
     "id": "portfolio2025",
     "title": "MASATO NASU PORTOFORIO",
-    "year": 2025,
-    "type": "PDF / Portfolio",
-    "catch": "PDFを開きます。",
-    "thumb": "assets/thumbs/portfolio.svg",
     "links": {
       "pdf": "assets/pdfs/masato_nasu_portfolio_2025.pdf"
-    },
-    "tags": [
-      "Portfolio",
-      "PDF",
-      "GitHub Pages"
-    ],
-    "series": "Portfolio"
+    }
   }
 ]

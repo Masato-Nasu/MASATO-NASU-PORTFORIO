@@ -17,23 +17,13 @@ function el(tag, attrs={}, children=[]) {
 
 function renderCard(w) {
   const card = el('div', { class:'card' });
-  const img = el('img', { class:'thumb', src:w.thumb || '', alt:w.title || '' });
   const content = el('div', { class:'content' });
 
   const titleRow = el('div', { class:'title' }, [
-    el('h2', {}, [w.title || 'Untitled']),
-    el('span', { class:'badge' }, [String(w.year ?? '')]),
-    el('span', { class:'badge' }, [w.type || ''])
+    el('h2', {}, [w.title || 'Untitled'])
   ]);
 
-  const catchText = el('div', { class:'catch' }, [w.catch || '']);
-
-  const tags = el('div', { class:'tags' });
-  (w.tags || []).forEach(t => tags.appendChild(el('span', { class:'tag' }, [t])));
-
   const actions = el('div', { class:'actions' });
-
-  // PDF をブラウザで直接開く
   if (w.links?.pdf) {
     actions.appendChild(el('a', {
       class:'btn',
@@ -43,19 +33,8 @@ function renderCard(w) {
     }, ['OPEN']));
   }
 
-  // 追加リンク（demo/repo等がある場合）
-  for (const key of ['demo','repo','article']) {
-    if (w.links?.[key]) {
-      actions.appendChild(el('a', { class:'btn', href:w.links[key], target:'_blank', rel:'noopener' }, [key.toUpperCase()]));
-    }
-  }
-
   content.appendChild(titleRow);
-  content.appendChild(catchText);
-  content.appendChild(tags);
   content.appendChild(actions);
-
-  card.appendChild(img);
   card.appendChild(content);
   return card;
 }
