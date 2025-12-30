@@ -1,10 +1,10 @@
 [
   {
     "id": "portfolio2025",
-    "title": "MASATO NASU PORTFOLIO 2025",
+    "title": "MASATO NASU PORTOFORIO",
     "year": 2025,
     "type": "PDF / Portfolio",
-    "catch": "PDFを全ページ連続スクロールで表示します（pdf.js）。",
+    "catch": "PDFを開きます。",
     "thumb": "assets/thumbs/portfolio.svg",
     "links": {
       "pdf": "assets/pdfs/masato_nasu_portfolio_2025.pdf"

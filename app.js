@@ -33,21 +33,14 @@ function renderCard(w) {
 
   const actions = el('div', { class:'actions' });
 
-  // ★ポイント：PDFを「全ページ表示」ビューアで開く
+  // PDF をブラウザで直接開く
   if (w.links?.pdf) {
-    actions.appendChild(el('a', {
-      class:'btn',
-      href:`viewer.html?file=${encodeURIComponent(w.links.pdf)}`,
-      target:'_blank',
-      rel:'noopener'
-    }, ['View all pages']));
-    // 直接PDFを開くボタンも一応付けます（ブラウザ内蔵ビューア）
     actions.appendChild(el('a', {
       class:'btn',
       href:w.links.pdf,
       target:'_blank',
       rel:'noopener'
-    }, ['Open PDF']));
+    }, ['OPEN']));
   }
 
   // 追加リンク（demo/repo等がある場合）
